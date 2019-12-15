@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {% if category %}{{ category.name }} {% else %} Products {% endif %}
+{% endblock %}
+{% block content %}
+
+{%for instance in object_list%}
+<p> {{instance.id}} - <a href='{{instance.get_absolute_url}}'>{{instance.title}}</a>
+	<img src="../{{instance.image}}" alt="" width="20%"></p>
+{%endfor%}
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module">
+            <h4>Categories</h4>
+            <ol class="list-unstyled">
+              <li {% if not category %} class="active"{% endif %}><a href="{% url 'products:product_list' %}">All</a></li>
+              <!--that part is not working for now-->
+            {% for c in categories %}
+
+              <li {% if category.slug == c.slug %} class="active"{% endif %}>
+                  <a href="{{ c.get_absolute_url }}">{{ c.title }}</a>
+              </li>
+            {% endfor %}
+
+{%endblock%}

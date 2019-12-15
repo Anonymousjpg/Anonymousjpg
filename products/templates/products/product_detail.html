@@ -1,0 +1,9 @@
+{%extends 'base.html' %}
+{% block content %}
+
+<img src="../{{object.image}}" alt="" height="50%"></p>
+<p> {%if object.description%}{{object.description}}{%else%}Description coming soon{%endif%} </p>
+{{object.price}}PLN
+<div clas='col-sm-8'>
+	<h1> {{object.title}} <a href="{% url 'update_cart' object.slug%} " class='pull-right'>Add to Cart</a></h1>
+{% endblock %}
