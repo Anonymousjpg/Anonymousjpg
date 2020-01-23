@@ -25,5 +25,5 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name='home.html'), name='home'),
     path('products/', include('products.urls')),
     path('cart/', include('shopping_cart.urls')),
-    path('cart/(?P<slug>[\w-]+)/$',update_cart, name='update_cart')
+    path('cart/<int:id>',update_cart, name='update_cart')
 ]
