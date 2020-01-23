@@ -18,7 +18,9 @@ def update_cart(request,slug):
 	cart=Cart.objects.all()[0]
 	product=Product.objects.get(slug=slug)
 	if not product in cart.products.all():
+		# print (product)
 		cart.products.add(product)
+		
 	else:
 		cart.products.remove(product)
 	new_total=0.00
