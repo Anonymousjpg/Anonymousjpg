@@ -3,15 +3,38 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
-  Hi {{ user.username }}!
-  <p><a href="http://127.0.0.1:8000/products">To the Shop</a></p>
-  <p><a href="{% url 'logout' %}">logout</a></p>
-  <p><a href="{% url 'password_reset' %}">reset password</a></p>
-{% else %}
-  <p>You are not logged in</p>
-  <p><a href="http://127.0.0.1:8000/products">To the Shop</a></p>
-  <a href="{% url 'login' %}">login</a>
-  <a href="{% url 'signup' %}">Sign up</a>
-{% endif %}
+    <style>
+
+        body {
+
+          background-image: url("static/img/2.jpg");
+      }
+      </style>
+      <div class="container-fluid">
+  <div class="row">
+    <div class="col-sm">
+      <p>Greatings fellow traveler. You stumbled upon a medieval shop. First thing you need to know before you proceed, is that</p>
+      <h3>THIS SHOP IS NOT SELLING ENYTHING</h3>
+      <p>It was made and deployed only for educational purpouses. Products presented here were gethered from web from various pages, prices are not actual values of those products. If you are here to check how this site works feel free to create a user of your own or use following: login: Guest, password: medieval_shop</p>
+      
+
+      {% if user.is_authenticated %}
+      <h1>Hi {{ user.username }}!</h1>
+      	<a href="http://127.0.0.1:8000/products" class="btn from-middle" >To the Shop</a> 
+      {% else %}
+  		<h1>You are not logged in</h1>
+  		<a href="http://127.0.0.1:8000/products" class="btn from-middle" >To the Shop</a>
+  	  {% endif %}
+<p>In case of copyright violation, please don't sue me, instead contact me at this adress: maciej.faber@gmail.com, and I promise I'll take down specified graphic.</p>
+    </div>
+    <div class="col-sm">
+
+    </div>
+
+    <div class="col-sm">
+    </div>
+
+  </div>
+</div>
+
 {% endblock %}
