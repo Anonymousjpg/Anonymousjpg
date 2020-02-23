@@ -1,9 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
-This is my cart
-<div class='col-sm-8 col-sm-offset-2'>
-<table class='table'>
+    <style>
+
+        body {
+          background-image: url("/static/img/3.jpg");
+      }
+      </style>
+
+{%if empty%}
+
+<h1> {{empty_message}} </h1>
+{%else%}
+
+<div class='col-sm-8 col-sm-offset-2' >
+<table class='table' style="color:white;">
 	<thead>
 		<th>item</th>
 		<th>price</th>
@@ -18,11 +29,14 @@ This is my cart
 
 	<tr>
 		<td>{{ item }}</td>
-		<td>{{ item.price }}</td><td><a href="{% url 'update_cart' item.slug%} ">Remove</a></td>
+		<td>{{ item.price }}</td><td><a href="{% url 'update_cart' item.id%} " >Remove</a></td>
 
 	</tr>
 {%endfor%}
 </table>
 </div>
-<p><a href="http://127.0.0.1:8000/products ">Back to the Shop</a></p>
+<p><a href="http://127.0.0.1:8000/products " class="btn from-middle">Back to the Shop</a></p>
+<br/>
+<a href='{%url "orders:checkout"%}'>Checkout</a>
+{%endif%}
 {% endblock %}
